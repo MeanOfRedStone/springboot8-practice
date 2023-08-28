@@ -26,4 +26,13 @@ public class IndexControllerTest {
         assertThat(body).contains("스프링 부트로 시작하는 웹 서비스");
     }
 
+    @Test
+    public void 지도페이지_로딩() {
+        //when
+        String body = this.restTemplate.getForObject("/map", String.class);
+
+        //then
+        assertThat(body).contains("<h1>카카오톡 지도 생성 / 자동 새로고침 확인</h1>");
+    }
+
 }
