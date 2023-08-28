@@ -1,5 +1,7 @@
 package org.redStone.springboot.web;
+import org.redStone.springboot.web.dto.HelloResponseDto;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /*
@@ -16,8 +18,16 @@ public class HelloController {
     - 예전에는 @RequestMapping(method = RequestMethod.GET)으로 사용했다.
         -> 여기서는 /hello로 요청이 오면 문자열 hello를 반환한다.
      */
+
+    //매핑을 통해 url과 연결 해준다.
     @GetMapping("/hello")
     public String hello() {
         return "hello";
+    }
+
+
+    @GetMapping("/hello/dto")
+    public HelloResponseDto helloDto(@RequestParam("name") String name, @RequestParam("amount") int amount){
+        return new HelloResponseDto(name, amount);
     }
 }
